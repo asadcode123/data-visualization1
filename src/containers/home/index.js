@@ -21,6 +21,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 
 import { events, status, participants } from "./database";
 import Participants from "../participants";
+import DataVisualization from "../visualization";
 
 import "./index.css";
 
@@ -221,7 +222,10 @@ const Home = (props) => {
           </Paper>
         </Grid>
         <Grid item xs={9}>
-          <Paper className="paper">Main Data Visualization Section</Paper>
+          <Paper className="paper">
+            Main Data Visualization Section
+            <DataVisualization />
+          </Paper>
         </Grid>
         <Participants />
       </Grid>
