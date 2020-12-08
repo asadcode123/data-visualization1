@@ -101,8 +101,8 @@ const Participants = (props) => {
           </Button>
         </DialogActions>
       </Dialog>
-      <Grid justify="flex-end" item xs={3}>
-        <Paper className="paper">
+      <Grid justify="flex-end" item xs={12}>
+        <Paper className="paper sidebar-height-2" >
           <div style={{ padding: "16px" }}>
             <Button
               onClick={openAddEventModal}
@@ -114,7 +114,7 @@ const Participants = (props) => {
             >
               +
             </Button>
-            <span>Participant Section</span>
+            <h2 className="h2">Participant Section</h2>
           </div>
           <List component="nav" aria-label="main mailbox folders">
             {participantsData.map((data, index) => {
@@ -144,11 +144,16 @@ const Participants = (props) => {
                       variant="dot"
                     ></Badge>
                   </Tooltip>
-                  <Tooltip title={`Batteru Level: ${data.batteryLevel}`}>
+                  <Tooltip title={`Batteru Level: ${data.batteryLevel}`} >
+                    <div className="progressbar-muz">
                     <CircularProgress
                       variant="determinate"
                       value={data.batteryLevel}
                     />
+                    <div className="progressbar-muz-percentage">
+                      {data.batteryLevel}
+                    </div>
+                    </div>
                   </Tooltip>
                 </ListItem>
               );

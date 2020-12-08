@@ -1,10 +1,13 @@
+
 .root {
   flex-grow: 1 !important;
 }
 
+
 .paper {
   padding: 2px !important;
   /* text-align: "center" !important; */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
 }
 
 .container {
@@ -25,4 +28,51 @@
 
 .MuiBadge-colorError {
   background-color: red;
+}
+
+
+.header_custom{
+  background-color: #1976d2 !important;
+  color: white !important;
+  padding: 22px 20px;
+  font-size:18px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 0px !important;
+}
+.sidebar-height-1{
+  min-height:41vh;
+}
+.sidebar-height-2{
+  min-height:41vh;
+}
+.visualization-h2{
+  padding-left: 20px;
+}
+.min-height-visualization{
+  min-height: 55vh;
+}
+.min-height-footer{
+  min-height: 22vh;
+}
+.progressbar-muz{
+  position: relative;
+}
+.progressbar-muz-percentage{
+  position: absolute;
+    top: 7px;
+    left: 10px;
+}
+.h2{
+  padding: 0px;
+  margin: 0;
+}
+.text-center{
+  text-align:center;
+}
+
+
+h2{
+  /* color: #1976d2; */
 }

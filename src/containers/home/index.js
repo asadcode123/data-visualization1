@@ -161,73 +161,86 @@ const Home = (props) => {
           </Button>
         </DialogActions>
       </Dialog>
+
+      <Grid item xs={12}>
+          <Paper className="header_custom" >Data Visualization</Paper>
+      </Grid>
       <Grid
         style={{
-          padding: "33px",
+          padding: "16px",
         }}
         container
         spacing={3}
+        
       >
-        <Grid justify="flex-end" item xs={3}>
-          <Paper className="paper">
-            <div style={{ padding: "16px" }}>
-              <Button
-                onClick={openAddEventModal}
-                style={{
-                  float: "right",
-                }}
-                variant="contained"
-                color="primary"
-              >
-                +
-              </Button>
-              <span>Event Info Section</span>
-            </div>
-            <List component="nav" aria-label="main mailbox folders">
-              {eventsData.map((data, index) => {
-                return (
-                  <ListItem button>
-                    <ListItemText primary={`${data.id} ${data.name}`} />
-                    <Button
-                      startIcon={<PlayArrowIcon />}
-                      style={{
-                        float: "right",
-                        marginLeft: "2px",
-                      }}
-                      variant="contained"
-                      color="primary"
-                    ></Button>
-                    <Button
-                      startIcon={<PauseIcon />}
-                      style={{
-                        float: "right",
-                        marginLeft: "2px",
-                      }}
-                      variant="contained"
-                      color="primary"
-                    ></Button>
-                    <Button
-                      startIcon={<StopIcon />}
-                      style={{
-                        float: "right",
-                        marginLeft: "2px",
-                      }}
-                      variant="contained"
-                      color="primary"
-                    ></Button>
-                  </ListItem>
-                );
-              })}
-            </List>
-          </Paper>
+        <Grid item xs={3}>
+          <Grid justify="flex-end" item xs={12} >
+            <Paper className="paper sidebar-height-1">
+              <div style={{ padding: "16px" }}>
+                <Button
+                  onClick={openAddEventModal}
+                  style={{
+                    float: "right",
+                  }}
+                  variant="contained"
+                  color="primary"
+                >
+                  +
+                </Button>
+                <h2 className="h2">Event Info Section</h2>
+              </div>
+              <List component="nav" aria-label="main mailbox folders">
+                {eventsData.map((data, index) => {
+                  return (
+                    <ListItem button>
+                      <ListItemText primary={`${data.id} ${data.name}`} />
+                      <Button
+                        startIcon={<PlayArrowIcon />}
+                        style={{
+                          float: "right",
+                          marginLeft: "2px",
+                        }}
+                        variant="contained"
+                        color="primary"
+                      ></Button>
+                      <Button
+                        startIcon={<PauseIcon />}
+                        style={{
+                          float: "right",
+                          marginLeft: "2px",
+                        }}
+                        variant="contained"
+                        color="primary"
+                      ></Button>
+                      <Button
+                        startIcon={<StopIcon />}
+                        style={{
+                          float: "right",
+                          marginLeft: "2px",
+                        }}
+                        variant="contained"
+                        color="primary"
+                      ></Button>
+                    </ListItem>
+                  );
+                })}
+              </List>
+            </Paper>
+          </Grid>
+          <br />
+          <Participants />
         </Grid>
         <Grid item xs={9}>
-          <Paper className="paper">
-            Main Data Visualization Section
+          <Paper className="paper min-height-visualization">
+            <h2 className="visualization-h2 text-center" >Main Data Visualization Section</h2>
             <DataVisualization />
           </Paper>
+          <br />
+          <Paper className="paper min-height-footer">
+            <h2 className="visualization-h2 text-center">Footer</h2>
+          </Paper>
         </Grid>
-        <Participants />
+        
       </Grid>
     </div>
   );
