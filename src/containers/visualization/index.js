@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   LineChart,
   Line,
@@ -11,7 +11,7 @@ import {
 } from "recharts";
 
 const DataVisualization = (props) => {
-  const data = [
+  const [data, setData] = useState([
     {
       name: 4000,
       uv: 4000,
@@ -47,7 +47,8 @@ const DataVisualization = (props) => {
       uv: 3490,
       amt: 2100,
     },
-  ];
+  ]);
+
   return (
     <ResponsiveContainer width="100%" height={400}>
       <LineChart

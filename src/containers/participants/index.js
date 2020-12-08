@@ -18,6 +18,8 @@ import Switch from "@material-ui/core/Switch";
 import Badge from "@material-ui/core/Badge";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Tooltip from "@material-ui/core/Tooltip";
+import BackspaceIcon from "@material-ui/icons/Backspace";
+import EditIcon from "@material-ui/icons/Edit";
 
 import { events, status, participants } from "../home/database";
 
@@ -32,7 +34,13 @@ const Participants = (props) => {
     id: "",
   });
 
-  const [open, setOpen] = React.useState(false);
+  const [editParticipant, setEditParticipant] = useState({
+    id: "",
+    dataIndex: -1,
+  });
+
+  const [open, setOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -60,6 +68,24 @@ const Participants = (props) => {
     participantClone.push(singleParticipant);
     setParticipantsData(participantClone);
     handleClose();
+  };
+
+  const editParticipantModal = (dataIndex, id) => {
+    let participantClone = [...participantsData];
+    for (let i = 0; i < participantClone.length; i++) {
+      if (i === dataIndex) {
+        participantClone[i].id = id;
+      }
+    }
+    setEditModalOpen(participantClone);
+    setEditModalOpen(false);
+  };
+
+  const removeParticipants = (id) => {
+    if (id) {
+      var newParticipants = participantsData.filter((x) => x.id !== id);
+    }
+    setParticipantsData(newParticipants);
   };
 
   return (
@@ -97,7 +123,56 @@ const Participants = (props) => {
             Reset
           </Button>
           <Button onClick={AddParticipant} color="primary">
-            Create
+            Invite
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={editModalOpen}
+        onClose={() => {
+          setEditModalOpen(false);
+        }}
+        aria-labelledby="form-dialog-title"
+        fullWidth
+      >
+        <DialogTitle id="form-dialog-title">Participants</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="participantRef"
+            label="Participant Id/Email"
+            type="text"
+            fullWidth
+            size="medium"
+            value={editParticipant.id}
+            onChange={(e) => {
+              setEditParticipant({
+                ...editParticipant,
+                id: editParticipant.id ? e.target.value : editParticipant.id,
+              });
+            }}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => {
+              setEditModalOpen(false);
+            }}
+            color="primary"
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={() => {
+              editParticipantModal(
+                editParticipant.dataIndex,
+                editParticipant.id
+              );
+            }}
+            color="primary"
+          >
+            Edit
           </Button>
         </DialogActions>
       </Dialog>
@@ -131,12 +206,8 @@ const Participants = (props) => {
                 title = "READY";
               }
               return (
-                <ListItem button>
-                  {data.id ? (
-                    <ListItemText primary={`${data.id}`} />
-                  ) : (
-                    <ListItemText primary={`${data.email}`} />
-                  )}
+                <ListItem>
+                  <ListItemText primary={`${data.id}`} />
                   <Tooltip title={title}>
                     <Badge
                       style={{ marginRight: "10px" }}
@@ -150,6 +221,23 @@ const Participants = (props) => {
                       value={data.batteryLevel}
                     />
                   </Tooltip>
+                  <BackspaceIcon
+                    style={{ marginLeft: "10px", cursor: "pointer" }}
+                    onClick={() => {
+                      removeParticipants(data.id);
+                    }}
+                  />
+                  <EditIcon
+                    style={{ marginLeft: "10px", cursor: "pointer" }}
+                    onClick={() => {
+                      setEditParticipant({
+                        ...editParticipant,
+                        id: data.id,
+                        dataIndex: index,
+                      });
+                      setEditModalOpen(true);
+                    }}
+                  />
                 </ListItem>
               );
             })}

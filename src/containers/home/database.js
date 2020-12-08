@@ -17,19 +17,16 @@ export const status = {
 export const participants = [
   {
     id: "123456",
-    email: "john@outlook.com",
     status: status.NOTCONNECTED,
     batteryLevel: 67,
   },
   {
     id: "234567",
-    email: "john1@outlook.com",
     status: status.READY,
     batteryLevel: 77,
   },
   {
-    id: "",
-    email: "john2@outlook.com",
+    id: "asad.abbas@koderlabs.com",
     status: status.CONNECTED,
     batteryLevel: 87,
   },

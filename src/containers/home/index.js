@@ -157,7 +157,7 @@ const Home = (props) => {
             Reset
           </Button>
           <Button onClick={AddEvent} color="primary">
-            Create
+            Save
           </Button>
         </DialogActions>
       </Dialog>
