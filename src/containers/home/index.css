@@ -1,0 +1,28 @@
+.root {
+  flex-grow: 1 !important;
+}
+
+.paper {
+  padding: 2px !important;
+  /* text-align: "center" !important; */
+}
+
+.container {
+  padding: 33px !important;
+}
+
+.create-event {
+  float: right !important;
+}
+
+.MuiBadge-colorPrimary {
+  background-color: green !important;
+}
+
+.MuiBadge-colorSecondary {
+  background-color: yellow !important;
+}
+
+.MuiBadge-colorError {
+  background-color: red;
+}
